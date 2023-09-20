@@ -1,0 +1,9 @@
+<div class="row col-12">
+    <div th:each="tg : ${technGrundlagen}" class="card m-3" style="width: 18rem;">
+        <img class="card-img-top" th:src="${tg.getImgLink1}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${tg.getTitel}"></h5>
+            <a th:href="@{/infoTech(id=${tg.getId})}" class="btn btn-primary">Seite besuchen</a>
+        </div>
+    </div>
+</div>

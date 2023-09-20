@@ -1,0 +1,7 @@
+<div class="col-12">
+    <div th:each="info : ${infos}">
+        <img th:src="${info.getImgLink1}" alt="image cap">
+        <h5 class="card-title" th:text="${info.getTitel}"></h5>
+        <p th:text="${info.getText1}"></p>
+    </div>
+</div>

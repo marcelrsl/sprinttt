@@ -11,10 +11,17 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           
           <li th:if="${activePage == 'techGrundlagen'}" class="nav-item">
-            <a class="nav-link active" th:href="@{/techGrundlagen}">Technische Grundlagen</a>
+            <a class="nav-link active" th:href="@{/technGrundlagen}">Technische Grundlagen</a>
           </li>
           <li th:unless="${activePage == 'techGrundlagen'}" class="nav-item">
-              <a class="nav-link" th:href="@{/techGrundlagen}">TEchnische Grundlagen</a>
+              <a class="nav-link" th:href="@{/technGrundlagen}">TEchnische Grundlagen</a>
+          </li>
+
+          <li th:if="${activePage == 'einrichten'}" class="nav-item">
+            <a class="nav-link active" th:href="@{/einrichten}">Neue Seite</a>
+          </li>
+          <li th:unless="${activePage == 'einrichten'}" class="nav-item">
+              <a class="nav-link" th:href="@{/einrichten}">Neue Seite</a>
           </li>
 
         </ul>
