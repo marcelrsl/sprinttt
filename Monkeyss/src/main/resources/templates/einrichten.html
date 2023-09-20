@@ -5,7 +5,7 @@
     <form class="row g-3" th:action="@{/einrichten/do}" method="post">
 
         <div class="col-12">
-            <select class="form-select" aria-label="Default select example" id="thema">
+            <select class="form-select" aria-label="Default select example" th:name="thema" id="thema">
                 <option selected>Welches Thema</option>
                 <option value="technGrundlagen">Techn Grundlagen</option>
                 <option value="sicherheitVerfahren">Sicherheit und versch. Verfahren</option>

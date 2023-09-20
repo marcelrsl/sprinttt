@@ -60,6 +60,32 @@ public class MonkeysController {
         return("redirect:/home");
     }
 
+    @GetMapping("/uebersicht")
+    public String uebersicht(@RequestParam(name = "thema", required = true, defaultValue = ".") String thema, Model model) {
+        model.addAttribute("activePage", "uebersicht");
+        
+        String t = thema;
+        switch(t) {
+            case "technGrundlagen":
+                model.addAttribute("uebersicht", technGrundlagen);
+                break;
+            case "sicherheitVerfahren":
+                model.addAttribute("uebersicht", sicherheitVerfahren);
+                break;
+            case "komplexeVerfahren":
+                model.addAttribute("uebersicht", komplexeVerfahren);
+                break;
+            case "angriffe":
+                model.addAttribute("uebersicht", angriffe);
+                break;
+            case ".":
+                break;
+        
+            
+        }
+        return "index.html";
+    }
+
     @GetMapping("/technGrundlagen")
     public String technGrundlagen(Model model) {
         model.addAttribute("activePage", "technGrundlagen");
