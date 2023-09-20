@@ -14,17 +14,12 @@
             <a class="nav-link active" th:href="@{/technGrundlagen}">Technische Grundlagen</a>
           </li>
           <li th:unless="${activePage == 'techGrundlagen'}" class="nav-item">
-              <a class="nav-link" th:href="@{/technGrundlagen}">TEchnische Grundlagen</a>
-          </li>
-
-          <li th:if="${activePage == 'einrichten'}" class="nav-item">
-            <a class="nav-link active" th:href="@{/einrichten}">Neue Seite</a>
-          </li>
-          <li th:unless="${activePage == 'einrichten'}" class="nav-item">
-              <a class="nav-link" th:href="@{/einrichten}">Neue Seite</a>
+              <a class="nav-link" th:href="@{/technGrundlagen}">Technische Grundlagen</a>
           </li>
 
         </ul>
+
+        <a class="btn btn-success btn-sm" role="button" th:href="@{/einrichten}">Neue Seite</a>
         
       </div>
     </div>
