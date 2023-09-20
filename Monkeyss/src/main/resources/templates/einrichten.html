@@ -23,25 +23,27 @@
             <input type="text" class="form-control" id="inputImgLink1" placeholder="ImgLink1" th:name="ImgLink1">
         </div>
         <div class="col-12">
-            <input type="hidden" class="form-control" id="Text2" placeholder="Text" th:name="Text2">
+            <input style="display: none;" class="form-control" id="inputText2" placeholder="Text" th:name="Text2">
         </div>
         <div class="col-12">
-            <input type="hidden" class="form-control" id="inputImgLink2" placeholder="ImgLink2" th:name="ImgLink2">
+            <input style="display: none;" class="form-control" id="inputImgLink2" placeholder="ImgLink2" th:name="ImgLink2">
         </div>
         <div class="col-12">
-            <input type="hidden" class="form-control" id="inputText3" placeholder="Text" th:name="Text3">
+            <input style="display: none;" class="form-control" id="inputText3" placeholder="Text" th:name="Text3">
         </div>
         <div class="col-12">
-            <input type="hidden" class="form-control" id="inputImgLink3" placeholder="ImgLink3" th:name="ImgLink3">
+            <input style="display: none;" class="form-control" id="inputImgLink3" placeholder="ImgLink3" th:name="ImgLink3">
         </div>
         <div class="col-12">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Add
+                  Hinzufügen
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" onclick="showElement()">Text</a></li>
-                  <li><a class="dropdown-item" onclick="showElement()">Bild</a></li>
+                  <li><a class="dropdown-item" onclick="showText2()">Text</a></li>
+                  <li><a class="dropdown-item" onclick="showBild2()">Bild</a></li>
+                  <li><a class="dropdown-item" onclick="showText3()">Text</a></li>
+                  <li><a class="dropdown-item" onclick="showBild3()">Bild</a></li>
                 </ul>
               </div>
         </div>
@@ -52,8 +54,20 @@
 </div>
 
 <script type="text/javascript">
-    function showElement() {
-        element = document.querySelector('inputText3');
-        element.querySelector.visibility = 'visible';
+    function showText2() {
+        
+        $("#inputText2").show();
+    }
+    function showBild2() {
+        
+        $("#inputImgLink2").show();
+    }
+    function showText3() {
+        
+        $("#inputText3").show();
+    }
+    function showBild3() {
+        
+        $("#inputImgLink3").show();
     }
 </script>
