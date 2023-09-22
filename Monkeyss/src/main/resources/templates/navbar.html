@@ -1,20 +1,41 @@
 <!-- 
   Die Navbar - hier befindet sich die Navigationsbar. Die gesamte Datei wird dynamisch per Link in die index.html eingebunden. Der Vorteil: Wenn du hier etwas änderst, wird das auf allen anderen Seiten ebenfalls übernommen. 
 -->
-<nav class="navbar navbar-transparent navbar-expand-lg bg-dark container">
+<nav class="navbar navbar-expand-lg fixed-bottom container">
     <div class="container-fluid">
-      <a class="navbar-brand" th:href="@{/home}">Verteilte Systeme</a>
+      <a class="navbar-brand" th:href="@{/home}"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           
-          <li th:if="${activePage == 'techGrundlagen'}" class="nav-item">
-            <a class="nav-link active" th:href="@{/technGrundlagen}">Technische Grundlagen</a>
+          <li th:if="${activePage == 'uebersicht'}" class="nav-item">
+            <a class="nav-link active" th:href="@{/uebersicht(thema='technGrundlagen')}">Technische Grundlagen</a>
           </li>
-          <li th:unless="${activePage == 'techGrundlagen'}" class="nav-item">
-              <a class="nav-link" th:href="@{/technGrundlagen}">Technische Grundlagen</a>
+          <li th:unless="${activePage == 'uebersicht'}" class="nav-item">
+              <a class="nav-link" th:href="@{/uebersicht(thema='technGrundlagen')}">Technische Grundlagen</a>
+          </li>
+
+          <li th:if="${activePage == 'sicherheitVerfahren'}" class="nav-item">
+            <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit und versch. Verfahren</a>
+          </li>
+          <li th:unless="${activePage == 'sicherheitVerfahren'}" class="nav-item">
+              <a class="nav-link" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit und versch. Verfahren</a>
+          </li>
+
+          <li th:if="${activePage == 'uebersicht'}" class="nav-item">
+            <a class="nav-link active" th:href="@{/uebersicht(thema='komplexeVerfahren')}">Komplexe Verfahren</a>
+          </li>
+          <li th:unless="${activePage == 'uebersicht'}" class="nav-item">
+              <a class="nav-link" th:href="@{/uebersicht(thema='komplexeVerfahren')}">Komplexe Verfahren</a>
+          </li>
+          
+          <li th:if="${activePage == 'uebersicht'}" class="nav-item">
+            <a class="nav-link active" th:href="@{/uebersicht(thema='angriffe')}">Angriffe</a>
+          </li>
+          <li th:unless="${activePage == 'uebersicht'}" class="nav-item">
+              <a class="nav-link" th:href="@{/uebersicht(thema='angriffe')}">Angriffe</a>
           </li>
 
         </ul>

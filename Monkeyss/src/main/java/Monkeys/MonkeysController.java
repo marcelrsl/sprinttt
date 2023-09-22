@@ -1,5 +1,7 @@
 package Monkeys;
 
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
@@ -39,21 +41,62 @@ public class MonkeysController {
     }
 
     @PostMapping(path = "/einrichten/do")
-    public String einrichtenDo(@RequestParam(name = "thema", required = true) String thema, @RequestParam(name = "titel", required = true) String titel, @RequestParam(name = "Text1", required = true) String text1, @RequestParam(name = "ImgLink1", required = true) String ImgLink1, @RequestParam(name = "Text2", required = false) String test2, @RequestParam(name = "ImgLink2", required = false) String ImgLink2, @RequestParam(name = "Text3", required = false) String text3, @RequestParam(name = "ImgLink3", required = false) String ImgLink3) {
+    public String einrichtenDo(@RequestParam(name = "thema", required = true) String thema, @RequestParam(name = "titel", required = true) String titel, @RequestParam(name = "Text1", required = true) String text1, @RequestParam(name = "ImgLink1", required = true) String ImgLink1, @RequestParam(name = "Text2", required = false) String text2, @RequestParam(name = "ImgLink2", required = false) String ImgLink2, @RequestParam(name = "Text3", required = false) String text3, @RequestParam(name = "ImgLink3", required = false) String ImgLink3) {
+
+        page page = new page(technGrundlagen.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3);
 
         String t = thema;
         switch(t) {
             case "technGrundlagen":
-                technGrundlagen.add(new page(technGrundlagen.size(), titel, ImgLink1, text1));
+                technGrundlagen.add(new page(technGrundlagen.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+                
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.addTechnGrundlagen(page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
                 break;
+
             case "sicherheitVerfahren":
-                sicherheitVerfahren.add(new page(sicherheitVerfahren.size(), titel, ImgLink1, text1));
+                sicherheitVerfahren.add(new page(sicherheitVerfahren.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.addTechnGrundlagen(page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
                 break;
+
             case "komplexeVerfahren":
-                komplexeVerfahren.add(new page(komplexeVerfahren.size(), titel, ImgLink1, text1));
+                komplexeVerfahren.add(new page(komplexeVerfahren.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.addTechnGrundlagen(page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
                 break;
+
             case "angriffe":
-                angriffe.add(new page(angriffe.size(), titel, ImgLink1, text1));
+                angriffe.add(new page(angriffe.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.addTechnGrundlagen(page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
                 break;
         }
         
@@ -61,56 +104,29 @@ public class MonkeysController {
     }
 
     @GetMapping("/uebersicht")
-    public String uebersicht(@RequestParam(name = "thema", required = true, defaultValue = ".") String thema, Model model) {
+    public String uebersicht(@RequestParam(name = "thema", required = true, defaultValue = ".") String thema, Model model) throws SQLException {
+        DatabaseController db = new DatabaseController();
         model.addAttribute("activePage", "uebersicht");
         
         String t = thema;
         switch(t) {
             case "technGrundlagen":
-                model.addAttribute("uebersicht", technGrundlagen);
+                model.addAttribute("uebersicht", db.getAllTechnGrundlagen());
                 break;
             case "sicherheitVerfahren":
-                model.addAttribute("uebersicht", sicherheitVerfahren);
+                model.addAttribute("uebersicht", db.getAllSicherheitVerfahren());
                 break;
             case "komplexeVerfahren":
-                model.addAttribute("uebersicht", komplexeVerfahren);
+                model.addAttribute("uebersicht", db.getAllKomplexeVerfahren());
                 break;
             case "angriffe":
-                model.addAttribute("uebersicht", angriffe);
+                model.addAttribute("uebersicht", db.getAllAngriffe());
                 break;
             case ".":
                 break;
         
             
         }
-        return "index.html";
-    }
-
-    @GetMapping("/technGrundlagen")
-    public String technGrundlagen(Model model) {
-        model.addAttribute("activePage", "technGrundlagen");
-        model.addAttribute("technGrundlagen", technGrundlagen);
-        return "index.html";
-    }
-
-    @GetMapping("/sicherheitVerfahren")
-    public String sicherheitVerfahren(Model model) {
-        model.addAttribute("activePage", "sicherheitVerfahren");
-        model.addAttribute("sicherheitVerfahren", sicherheitVerfahren);
-        return "index.html";
-    }
-
-    @GetMapping("/komplexeVerfahren")
-    public String komplexeVerfahren(Model model) {
-        model.addAttribute("activePage", "komplexeVerfahren");
-        model.addAttribute("komplexeVerfahren", komplexeVerfahren);
-        return "index.html";
-    }
-
-    @GetMapping("/angriffe")
-    public String angriffe(Model model) {
-        model.addAttribute("activePage", "angriffe");
-        model.addAttribute("angriffe", angriffe);
         return "index.html";
     }
 
