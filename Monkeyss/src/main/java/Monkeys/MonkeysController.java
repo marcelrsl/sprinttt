@@ -112,15 +112,19 @@ public class MonkeysController {
         switch(t) {
             case "technGrundlagen":
                 model.addAttribute("uebersicht", db.getAllTechnGrundlagen());
+                model.addAttribute("thema", "technGrundlagen");
                 break;
             case "sicherheitVerfahren":
                 model.addAttribute("uebersicht", db.getAllSicherheitVerfahren());
+                model.addAttribute("thema", "sicherheitVerfahren");
                 break;
             case "komplexeVerfahren":
                 model.addAttribute("uebersicht", db.getAllKomplexeVerfahren());
+                model.addAttribute("thema", "komplexeVerfahren");
                 break;
             case "angriffe":
                 model.addAttribute("uebersicht", db.getAllAngriffe());
+                model.addAttribute("thema", "angriffe");
                 break;
             case ".":
                 break;
@@ -131,9 +135,25 @@ public class MonkeysController {
     }
 
     @GetMapping("/infoTech")
-    public String infoTech(@RequestParam(name = "id", required = true, defaultValue = "0") int id, Model model) {
+    public String infoTech(@RequestParam(name = "id", required = true, defaultValue = "0") int id, @RequestParam(name = "thema", required = true) String thema, Model model) throws SQLException{
         model.addAttribute("activePage", "infoTech");
-        model.addAttribute("infos", technGrundlagen.get(id));
+        DatabaseController db = new DatabaseController();
+        String t = thema;
+        switch(t) {
+            case "technGrundlagen":
+                model.addAttribute("info", db.getTechnGrundlagen(id));
+                break;
+            case "sicherheitVerfahren":
+                model.addAttribute("info", db.getSicherheitVerfahren(id));
+                break;
+            case "komplexeVerfahren":
+                model.addAttribute("info", db.getKomplexeVerfahren(id));
+                break;
+            case "angriffe":
+                model.addAttribute("info", db.getAngriffe(id));
+                break;
+            
+        }
         return "index.html";
     }
 

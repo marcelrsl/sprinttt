@@ -57,7 +57,7 @@ public class DatabaseController {
         Connection connection = connect();
         if(connection != null) {
             Statement statement = connection.createStatement();
-            statement.execute("INSERT INTO technGrundlagen(titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
+            statement.execute("INSERT INTO technGrundlagen(titel, imgLink1, text1, imgLink2, text2, imgLink3, text3) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
 
             closeConnection(connection);
         }
@@ -104,7 +104,7 @@ public class DatabaseController {
         Connection connection = connect();
         if(connection != null) {
             Statement statement = connection.createStatement();
-            statement.execute("INSERT INTO sicherheitVerfahren(titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
+            statement.execute("INSERT INTO sicherheitVerfahren(titel, imgLink1, text1, imgLink2, text2, imgLink3, text3) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
 
             closeConnection(connection);
         }
@@ -148,7 +148,7 @@ public class DatabaseController {
         Connection connection = connect();
         if(connection != null) {
             Statement statement = connection.createStatement();
-            statement.execute("INSERT INTO komplexeVerfahren(id TEXT, titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getId()+"','"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
+            statement.execute("INSERT INTO komplexeVerfahren(titel, imgLink1, text1, imgLink2, text2, imgLink3, text3) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
 
             closeConnection(connection);
         }
@@ -191,7 +191,7 @@ public class DatabaseController {
         Connection connection = connect();
         if(connection != null) {
             Statement statement = connection.createStatement();
-            statement.execute("INSERT INTO angriffe(id TEXT, titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getId()+"','"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
+            statement.execute("INSERT INTO angriffe(titel, imgLink1, text1, imgLink2, text2, imgLink3, text3) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
 
             closeConnection(connection);
         }
@@ -224,6 +224,8 @@ public class DatabaseController {
 			ResultSet res = statement.executeQuery("SELECT * FROM ANGRIFFE ORDER BY titel ASC");
 			while(res.next()){
 				angriffe.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+
+                
 			}
 			closeConnection(connection);
 		}
