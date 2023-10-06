@@ -57,7 +57,7 @@ public class DatabaseController {
         Connection connection = connect();
         if(connection != null) {
             Statement statement = connection.createStatement();
-            statement.execute("INSERT INTO technGrundlagen(id TEXT, titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getId()+"','"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
+            statement.execute("INSERT INTO technGrundlagen(titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
 
             closeConnection(connection);
         }
@@ -71,7 +71,9 @@ public class DatabaseController {
 
             ResultSet res = statement.executeQuery("SELECT * FROM technGrundlagen WHERE id='"+id+"'");
 			while(res.next()){
-				page = new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+				page = new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+
+                page.setId(res.getInt(1));
 			}
 			closeConnection(connection);
         }
@@ -87,7 +89,10 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM TECHNGRUNDLAGEN ORDER BY titel ASC");
 			while(res.next()){
-				technGrundlagen.add(new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+				technGrundlagen.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+
+                
+                
 			}
 			closeConnection(connection);
 		}
@@ -99,7 +104,7 @@ public class DatabaseController {
         Connection connection = connect();
         if(connection != null) {
             Statement statement = connection.createStatement();
-            statement.execute("INSERT INTO sicherheitVerfahren(id TEXT, titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getId()+"','"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
+            statement.execute("INSERT INTO sicherheitVerfahren(titel TEXT, imgLink1 TEXT, text1 TEXT, imgLink2 TEXT, text2 TEXT, imgLink3 TEXT, text3 TEXT) values ('"+page.getTitel()+"','"+page.getImgLink1()+"','"+page.getText1()+"','"+page.getImgLink2()+"','"+page.getText2()+"','"+page.getImgLink3()+"','"+page.getText3()+"')");
 
             closeConnection(connection);
         }
@@ -113,7 +118,9 @@ public class DatabaseController {
 
             ResultSet res = statement.executeQuery("SELECT * FROM sicherheitVerfahren WHERE id='"+id+"'");
 			while(res.next()){
-				page = new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+				page = new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+
+                page.setId(res.getInt(1));
 			}
 			closeConnection(connection);
         }
@@ -129,7 +136,7 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM SICHERHEITVERFAHREN ORDER BY titel ASC");
 			while(res.next()){
-				sicherheitVerfahren.add(new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+				sicherheitVerfahren.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
 			}
 			closeConnection(connection);
 		}
@@ -155,7 +162,8 @@ public class DatabaseController {
 
             ResultSet res = statement.executeQuery("SELECT * FROM komplexeVerfahren WHERE id='"+id+"'");
 			while(res.next()){
-				page = new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+				page = new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+                page.setId(res.getInt(1));
 			}
 			closeConnection(connection);
         }
@@ -171,7 +179,7 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM KOMPLEXEVERFAHREN ORDER BY titel ASC");
 			while(res.next()){
-				komplexeVerfahren.add(new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+				komplexeVerfahren.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
 			}
 			closeConnection(connection);
 		}
@@ -197,7 +205,9 @@ public class DatabaseController {
 
             ResultSet res = statement.executeQuery("SELECT * FROM angriffe WHERE id='"+id+"'");
 			while(res.next()){
-				page = new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+				page = new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+
+                page.setId(res.getInt(1));
 			}
 			closeConnection(connection);
         }
@@ -213,7 +223,7 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM ANGRIFFE ORDER BY titel ASC");
 			while(res.next()){
-				angriffe.add(new page(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+				angriffe.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
 			}
 			closeConnection(connection);
 		}

@@ -10,6 +10,7 @@ public class MonkeysApplication {
 		DatabaseController db = new DatabaseController();
 		db.connect();
 		
+		
 		SpringApplication.run(MonkeysApplication.class, args);
 	}
 

@@ -1,12 +1,23 @@
-<div class="col-12">
-    <div th:each="info : ${infos}">
-        
-        <h5 class="card-title" th:text="${info.getTitel}"></h5>
-        <p th:text="${info.getText1}"></p>
-        <img th:src="${info.getImgLink1}" alt="image cap">
-        <p th:text="${info.getText2}"></p>
-        <img th:src="${info.getImgLink2}" alt="">
-        <p th:text="${info.getText3}"></p>
-        <img th:src="${info.getImgLink3}" alt="">
+
+<div th:each="info : ${infos}">
+    <h5 class="card-title text-center fs-1" th:text="${info.getTitel}"></h5>
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-6">
+              <div class="p-3" style="max-height: 20%;">
+                <p th:text="${info.getText1}"></p>
+              </div>
+            </div>
+            <div class="col-6" style="max-height: 20%;">
+              <div class="p-3">
+                <img th:src="${info.getImgLink1}" class="img-fluid" alt="image cap">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-3">
+                <p th:text="${info.getText2}"></p>
+              </div>
+            </div>
+        </div>
     </div>
 </div>

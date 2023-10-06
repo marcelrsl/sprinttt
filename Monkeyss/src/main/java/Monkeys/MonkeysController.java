@@ -43,12 +43,12 @@ public class MonkeysController {
     @PostMapping(path = "/einrichten/do")
     public String einrichtenDo(@RequestParam(name = "thema", required = true) String thema, @RequestParam(name = "titel", required = true) String titel, @RequestParam(name = "Text1", required = true) String text1, @RequestParam(name = "ImgLink1", required = true) String ImgLink1, @RequestParam(name = "Text2", required = false) String text2, @RequestParam(name = "ImgLink2", required = false) String ImgLink2, @RequestParam(name = "Text3", required = false) String text3, @RequestParam(name = "ImgLink3", required = false) String ImgLink3) {
 
-        page page = new page(technGrundlagen.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3);
+        page page = new page( titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3);
 
         String t = thema;
         switch(t) {
             case "technGrundlagen":
-                technGrundlagen.add(new page(technGrundlagen.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+                technGrundlagen.add(new page(titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
                 
                 try {
                     DatabaseController db = new DatabaseController();
@@ -61,7 +61,7 @@ public class MonkeysController {
                 break;
 
             case "sicherheitVerfahren":
-                sicherheitVerfahren.add(new page(sicherheitVerfahren.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+                sicherheitVerfahren.add(new page( titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
 
                 try {
                     DatabaseController db = new DatabaseController();
@@ -74,7 +74,7 @@ public class MonkeysController {
                 break;
 
             case "komplexeVerfahren":
-                komplexeVerfahren.add(new page(komplexeVerfahren.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+                komplexeVerfahren.add(new page(titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
 
                 try {
                     DatabaseController db = new DatabaseController();
@@ -87,7 +87,7 @@ public class MonkeysController {
                 break;
 
             case "angriffe":
-                angriffe.add(new page(angriffe.size(), titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+                angriffe.add(new page(titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
 
                 try {
                     DatabaseController db = new DatabaseController();

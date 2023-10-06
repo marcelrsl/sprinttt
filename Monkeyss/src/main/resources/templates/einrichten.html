@@ -1,6 +1,5 @@
 <hr>
 <h1>Einrichten einer neuen Seite</h1>
-<hr>
 <div>
     <form class="row g-3" th:action="@{/einrichten/do}" method="post">
 
@@ -13,23 +12,24 @@
                 <option value="angriffe">Angriffe</option>
               </select>
         </div>
-        <div class="col-12" >
+        <div class="col-3"></div>
+        <div class="col-6" >
             <input type="text" class="form-control" id="inputTitel" placeholder="Titel" th:name="titel">
         </div>
-        <div class="col-12">
-            <input type="text" class="form-control" id="inputText1" placeholder="Text" th:name="Text1">
+        <div class="col-6">
+            <textarea class="form-control" id="inputText1" placeholder="Text" th:name="Text1"></textarea>
         </div>
-        <div class="col-12">
+        <div class="col-6">
             <input type="text" class="form-control" id="inputImgLink1" placeholder="ImgLink1" th:name="ImgLink1">
         </div>
         <div class="col-12">
-            <input style="display: none;" class="form-control" id="inputText2" placeholder="Text" th:name="Text2">
+            <textarea style="display: none;" class="form-control" id="inputText2" placeholder="Text" th:name="Text2"></textarea>
         </div>
         <div class="col-12">
             <input style="display: none;" class="form-control" id="inputImgLink2" placeholder="ImgLink2" th:name="ImgLink2">
         </div>
         <div class="col-12">
-            <input style="display: none;" class="form-control" id="inputText3" placeholder="Text" th:name="Text3">
+            <textarea style="display: none;" class="form-control" id="inputText3" placeholder="Text" th:name="Text3"></textarea>
         </div>
         <div class="col-12">
             <input style="display: none;" class="form-control" id="inputImgLink3" placeholder="ImgLink3" th:name="ImgLink3">
