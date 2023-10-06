@@ -10,7 +10,7 @@ public class page {
     String text3;
     int id;
 
-    public page(int id, String titel, String imgLink1, String text1) {
+    public page(String titel, String imgLink1, String text1, String imgLink2, String text2, String imgLink3, String text3) {
         setImgLink1(imgLink1);
         setImgLink2(imgLink2);
         setImgLink3(imgLink3);
@@ -18,7 +18,7 @@ public class page {
         setText2(text2);
         setText3(text3);
         setTitel(titel);
-        setId(id);
+        
 
     }
 

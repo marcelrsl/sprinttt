@@ -9,15 +9,16 @@
     <title>Monkeys</title>
   </head>
   <body>
-    
-    <!-- Hier wird die menu.html-Datei eingebunden, damit die Navigation dynamisch wird. -->
-    <div th:insert="navbar"></div>
-    
+    <div class="container" th:insert="name"></div> 
     <!-- 
         In diesen Container wird die aktuelle Seite eingebunden. Der Wert für activePage kommt direkt von der Navbar oder anderen Seiten, die per Link aufgerufen werden. 
     -->
     <div class="container" th:insert="${activePage}"></div>
+
+    <!-- Hier wird die menu.html-Datei eingebunden, damit die Navigation dynamisch wird. -->
+    <div th:insert="navbar"></div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   </body>
 </html>
