@@ -137,11 +137,14 @@ public class MonkeysController {
     @GetMapping("/infoTech")
     public String infoTech(@RequestParam(name = "id", required = true, defaultValue = "0") int id, @RequestParam(name = "thema", required = true) String thema, Model model) throws SQLException{
         model.addAttribute("activePage", "infoTech");
+
         DatabaseController db = new DatabaseController();
         String t = thema;
         switch(t) {
             case "technGrundlagen":
-                model.addAttribute("info", db.getTechnGrundlagen(id));
+                
+            model.addAttribute("info", db.getTechnGrundlagen(id));
+            //System.out.println(db.getTechnGrundlagen(id));
                 break;
             case "sicherheitVerfahren":
                 model.addAttribute("info", db.getSicherheitVerfahren(id));

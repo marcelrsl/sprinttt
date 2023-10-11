@@ -68,10 +68,10 @@ public class DatabaseController {
         page page = null;
         if(connection != null) {
             Statement statement = connection.createStatement();
-
             ResultSet res = statement.executeQuery("SELECT * FROM technGrundlagen WHERE id='"+id+"'");
 			while(res.next()){
 				page = new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8));
+                System.out.println(page);
 
                 page.setId(res.getInt(1));
 			}
@@ -89,9 +89,8 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM TECHNGRUNDLAGEN ORDER BY titel ASC");
 			while(res.next()){
-				technGrundlagen.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
-
-                
+				technGrundlagen.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getInt(1)));
+                  
                 
 			}
 			closeConnection(connection);
@@ -136,7 +135,7 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM SICHERHEITVERFAHREN ORDER BY titel ASC");
 			while(res.next()){
-				sicherheitVerfahren.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+				sicherheitVerfahren.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getInt(1)));
 			}
 			closeConnection(connection);
 		}
@@ -179,7 +178,7 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM KOMPLEXEVERFAHREN ORDER BY titel ASC");
 			while(res.next()){
-				komplexeVerfahren.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+				komplexeVerfahren.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getInt(1)));
 			}
 			closeConnection(connection);
 		}
@@ -223,7 +222,7 @@ public class DatabaseController {
 			Statement statement = connection.createStatement();
 			ResultSet res = statement.executeQuery("SELECT * FROM ANGRIFFE ORDER BY titel ASC");
 			while(res.next()){
-				angriffe.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8)));
+				angriffe.add(new page(res.getString(2), res.getString(3), res.getString(4), res.getString(5), res.getString(6), res.getString(7), res.getString(8), res.getInt(1)));
 
                 
 			}
