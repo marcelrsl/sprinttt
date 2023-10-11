@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Das ist Caesar</h1>
+    <hr>
+    <div th:if></div>
+    <form action="#" th:action="@{/}" method="get">
+      <label for="klartext">Klartext</label><br>
+      <input type="text" id="klartext" name="klartext" value=""><br>
+      <label for="key">Key</label><br>
+      <input type="number" id="key" name="key" value=""><br>
+      <button type ="submit">Verschlüsseln</button>
+      <p th:if="${klartext != null and klartext != ''}">Alles ist zu sehen</p>
+    <p th:unless="${klartext != null and klartext != ''}">Nichts ist zu sehen</p>
+    </form>
+  </body>
+</html>
