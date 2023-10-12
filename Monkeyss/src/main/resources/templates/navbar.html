@@ -1,9 +1,9 @@
 <!-- 
   Die Navbar - hier befindet sich die Navigationsbar. Die gesamte Datei wird dynamisch per Link in die index.html eingebunden. Der Vorteil: Wenn du hier etwas änderst, wird das auf allen anderen Seiten ebenfalls übernommen. 
 -->
-<nav class="navbar navbar-expand-lg fixed-bottom container" style="background-color: white;">
+<nav class="navbar navbar-expand-lg fixed-top" style="background-color: burlywood;">
     <div class="container-fluid">
-      <a class="navbar-brand" th:href="@{/home}"></a>
+      <a class="navbar-brand" th:href="@{/home}">Verteilte Systeme</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -18,10 +18,10 @@
           </li>
 
           <li th:if="${activePage == 'sicherheitVerfahren'}" class="nav-item">
-            <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit und versch. Verfahren</a>
+            <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit + Verfahren</a>
           </li>
           <li th:unless="${activePage == 'sicherheitVerfahren'}" class="nav-item">
-              <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit und versch. Verfahren</a>
+              <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit + Verfahren</a>
           </li>
 
           <li th:if="${activePage == 'uebersicht'}" class="nav-item">
