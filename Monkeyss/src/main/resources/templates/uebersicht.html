@@ -1,9 +1,14 @@
-<div class="row col-12">
-    <div th:each="ue : ${uebersicht}" class="card m-3" style="width: 18rem;">
-        <img class="card-img-top" th:src="${ue.getImgLink1}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${ue.getTitel}"></h5>
-            <a th:href="@{/infoTech(id=${ue.getId}, thema=${thema})}" class="btn btn-primary">Seite besuchen</a>
+<div style="width: 100%; height: 100vh;">
+    <h1 class="position-absolute top-50 start-50 translate-middle display-2">Technische Grundlagen</h1>
+</div>
+
+<div style="background-color: burlywood;">
+    <div class="row col-12 text-center justify-content-center" >
+        <div th:each="ue : ${uebersicht}" class="card bg-transparent border-dark m-3 " style="width: 18rem; margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
+            <div class="card-body" style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
+                <h5 class="card-title" th:text="${ue.getTitel}"></h5>
+                <a th:href="@{/infoTech(id=${ue.getId}, thema=${thema})}" class="btn btn-primary">Seite besuchen</a>
+            </div>
         </div>
     </div>
 </div>

@@ -231,4 +231,13 @@ public class DatabaseController {
 		
 		return angriffe;
 	}
+
+    public void removePage() throws SQLException{
+        Connection connection = connect();
+		if(connection != null){
+			Statement statement = connection.createStatement();
+			statement.execute("DELETE FROM technGrundlagen");
+			closeConnection(connection);
+		}
+    }
 }
