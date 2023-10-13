@@ -112,18 +112,22 @@ public class MonkeysController {
         switch(t) {
             case "technGrundlagen":
                 model.addAttribute("uebersicht", db.getAllTechnGrundlagen());
+                model.addAttribute("titel", "Technische Grundlagen");
                 model.addAttribute("thema", "technGrundlagen");
                 break;
             case "sicherheitVerfahren":
                 model.addAttribute("uebersicht", db.getAllSicherheitVerfahren());
+                model.addAttribute("titel", "Sicherheit & Verfahren");
                 model.addAttribute("thema", "sicherheitVerfahren");
                 break;
             case "komplexeVerfahren":
                 model.addAttribute("uebersicht", db.getAllKomplexeVerfahren());
+                model.addAttribute("titel", "Komplexe Verfahren");
                 model.addAttribute("thema", "komplexeVerfahren");
                 break;
             case "angriffe":
                 model.addAttribute("uebersicht", db.getAllAngriffe());
+                model.addAttribute("titel", "Angriffe");
                 model.addAttribute("thema", "angriffe");
                 break;
             case ".":
