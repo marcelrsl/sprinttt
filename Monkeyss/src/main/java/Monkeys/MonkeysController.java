@@ -164,6 +164,10 @@ public class MonkeysController {
         return "index.html";
     }
 
+    @GetMapping("/editPage") 
+    public String editPage(Model model) {
+        return "index.html";
+    }
 
     public void showTechnGrundlagen() {
         

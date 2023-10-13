@@ -1,0 +1,65 @@
+<div style="margin-top: 50px; margin-left: 5%; margin-right: 5%; height: 100vh;">
+    <div>
+        <form class="row g-3" style="margin-top: 5%;" th:action="@{/einrichten/do}" method="post">
+    
+            <div class="col-3"></div>
+            <div class="col-6" >
+                <input type="text" class="form-control text-center fs-2" id="inputTitel" th:placeholder="${info.getTitel}" th:name="titel">
+            </div>
+            
+            <div class="col-6">
+                <textarea class="form-control" id="inputText1" th:placeholder="${info.getText1}" th:name="Text1"></textarea>
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" id="inputImgLink1" placeholder="ImgLink1" th:name="ImgLink1">
+            </div>
+            <div class="col-12">
+                <textarea style="display: none;" class="form-control" id="inputText2" placeholder="Text" th:name="Text2"></textarea>
+            </div>
+            <div class="col-12">
+                <input style="display: none;" class="form-control" id="inputImgLink2" placeholder="ImgLink2" th:name="ImgLink2">
+            </div>
+            <div class="col-12">
+                <textarea style="display: none;" class="form-control" id="inputText3" placeholder="Text" th:name="Text3"></textarea>
+            </div>
+            <div class="col-12">
+                <input style="display: none;" class="form-control" id="inputImgLink3" placeholder="ImgLink3" th:name="ImgLink3">
+            </div>
+            <div class="col-12">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Hinzufügen
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" onclick="showText2()">Text</a></li>
+                      <li><a class="dropdown-item" onclick="showBild2()">Bild</a></li>
+                      <li><a class="dropdown-item" onclick="showText3()">Text</a></li>
+                      <li><a class="dropdown-item" onclick="showBild3()">Bild</a></li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Seite speichern</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    
+    <script type="text/javascript">
+        function showText2() {
+            
+            $("#inputText2").show();
+        }
+        function showBild2() {
+            
+            $("#inputImgLink2").show();
+        }
+        function showText3() {
+            
+            $("#inputText3").show();
+        }
+        function showBild3() {
+            
+            $("#inputImgLink3").show();
+        }
+    </script>

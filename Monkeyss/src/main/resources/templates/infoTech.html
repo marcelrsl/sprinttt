@@ -29,7 +29,14 @@
         <p class="fs-6 position-absolute top-50 start-50 translate-middle" style="line-height: 35px;" th:utext="${info.getText1}"></p>
       </div>
     </div>
-
+<!--
+    <span th:unless="${info.getImgLink1()}==null">
+      <div class="container">
+        <p class="fs-6 position-absolute top-50 start-20 translate-middle" style="line-height: 35px;" th:utext="${info.getText1}"></p>
+        <img th:src="${info.getImgLink1}" class="img-fluid position-absolute top-50 start-80" alt="image cap">
+      </div>
+    </span>
+  -->
     
 </div>
 

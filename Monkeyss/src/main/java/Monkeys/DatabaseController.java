@@ -63,6 +63,13 @@ public class DatabaseController {
         }
     }
 
+    public void editTechnGrundlagen(int id) {
+        Connection connection = connect();
+        if(connection != null) {
+            
+        }
+    }
+
     public page getTechnGrundlagen(int id) throws SQLException {
         Connection connection = connect();
         page page = null;
@@ -240,4 +247,6 @@ public class DatabaseController {
 			closeConnection(connection);
 		}
     }
+
+    
 }
