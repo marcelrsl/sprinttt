@@ -48,7 +48,6 @@
           <span th:if="${editMode}==true">
             <a class="btn btn-success btn-sm" role="button" th:href="@{/einrichten}">Neue Seite</a>
             <a class="btn btn-success btn-sm" role="button" th:href="@{/navEdit/ende}">Public Mode</a>
-            
           </span>
           
         
@@ -56,3 +55,18 @@
       </div>
     </div>
   </nav>
+
+
+
+
+<script>
+  const toastTrigger = document.getElementById('liveToastBtn')
+  const toastLiveExample = document.getElementById('liveToast')
+
+  if (toastTrigger) {
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    toastTrigger.addEventListener('click', () => {
+    toastBootstrap.show()
+    })
+}
+</script>

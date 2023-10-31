@@ -9,30 +9,30 @@
                 <h5 class="card-title" th:text="${ue.getTitel}"></h5>
 
                 <span th:unless="${editMode}==true">
-                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Seite besuchen</a>
-                    <div class="modal" id="exampleModal" tabindex="-1">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title">Modal title</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Modal body text goes here.</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" th:href="@{/infoTech(id=${ue.getId}, thema=${thema})}" class="btn btn-primary">Seite besuchen</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    <a class="btn btn-primary" th:href="@{/infoTech(id=${ue.getId}, thema=${thema})}">Seite besuchen</a>
                 </span>
                 <span th:if="${editMode}==true">
-                    <a th:href="@{/}" class="btn btn-primary position-absolute top-0 start-100 translate-middle"><i class="bi bi-trash"></i></a>
+                    <a th:href="@{/deletePage(id=${ue.getId}, thema=${thema})}" class="btn btn-primary position-absolute top-0 start-100 translate-middle"><i class="bi bi-trash"></i></a>
                     <a th:href="@{/editPage(id=${ue.getId}, thema=${thema})}" class="btn btn-primary">Bearbeiten</a>
                 </span>
                 
             </div>
         </div>
     </div>
+</div>
+
+<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
 </div>

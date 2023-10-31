@@ -274,6 +274,20 @@ public class MonkeysController {
         return("redirect:/home");
     }
 
+    @GetMapping("/deletePage")
+    public String deletePage(@RequestParam(name = "id", required = true, defaultValue = "0") int id, @RequestParam(name = "thema", required = true) String thema, Model model) throws SQLException {
+
+        try {
+            DatabaseController db = new DatabaseController();
+            db.deletePage(thema, id);
+        }
+        catch(Exception e){
+            System.out.println("Error! Player data not valid or parsing went wrong :( !");
+            System.out.println(e);
+        } 
+        return("redirect:/home");
+    }
+
     @GetMapping("/navEdit/start")
     public String navEditStart() {
         setEditModus(true);

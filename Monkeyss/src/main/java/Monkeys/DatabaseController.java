@@ -70,6 +70,15 @@ public class DatabaseController {
             statement.execute("UPDATE '"+thema+"' SET titel='"+page.getTitel()+"', imgLink1='"+page.getImgLink1()+"', text1='"+page.getText1()+"', imgLink2='"+page.getImgLink2()+"', text2='"+page.getText2()+"', imgLink3='"+page.getImgLink3()+"', text3='"+page.getText3()+"' WHERE id='"+id+"'");
         }
     }
+
+    public void deletePage(String thema, int id) throws SQLException{
+        Connection connection = connect();
+		if(connection != null){
+			Statement statement = connection.createStatement();
+			statement.execute("DELETE FROM '"+thema+"' WHERE id='"+id+"'");
+			closeConnection(connection);
+		}
+    }
     
 
     public page getTechnGrundlagen(int id) throws SQLException {
@@ -241,14 +250,7 @@ public class DatabaseController {
 		return angriffe;
 	}
 
-    public void removePage() throws SQLException{
-        Connection connection = connect();
-		if(connection != null){
-			Statement statement = connection.createStatement();
-			statement.execute("DELETE FROM technGrundlagen");
-			closeConnection(connection);
-		}
-    }
+    
 
     
 }
