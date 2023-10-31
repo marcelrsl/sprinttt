@@ -1,29 +1,29 @@
 <div style="margin-top: 50px; margin-left: 5%; margin-right: 5%; height: 100vh;">
     <div>
-        <form class="row g-3" style="margin-top: 5%;" th:action="@{/einrichten/do}" method="post">
+        <form class="row g-3" style="margin-top: 5%;" th:action="@{/editPage/do(id=${info.getId}, thema=${thema})}" method="post">
     
             <div class="col-3"></div>
             <div class="col-6" >
-                <input type="text" class="form-control text-center fs-2" id="inputTitel" th:placeholder="${info.getTitel}" th:name="titel">
+                <textarea type="text" class="form-control text-center fs-2" id="inputTitel" th:text="${info.getTitel}" th:name="titel"></textarea>
             </div>
             
             <div class="col-6">
-                <textarea class="form-control" id="inputText1" th:placeholder="${info.getText1}" th:name="Text1"></textarea>
+                <textarea class="form-control" id="inputText1" th:text="${info.getText1}" th:name="Text1"></textarea>
             </div>
             <div class="col-6">
-                <input type="text" class="form-control" id="inputImgLink1" placeholder="ImgLink1" th:name="ImgLink1">
+                <textarea type="text" class="form-control" id="inputImgLink1" th:text="${info.getImgLink1}" th:name="ImgLink1"></textarea>
             </div>
             <div class="col-12">
-                <textarea style="display: none;" class="form-control" id="inputText2" placeholder="Text" th:name="Text2"></textarea>
+                <textarea style="display: none;" class="form-control" id="inputText2" th:text="${info.getText2}" th:name="Text2"></textarea>
             </div>
             <div class="col-12">
-                <input style="display: none;" class="form-control" id="inputImgLink2" placeholder="ImgLink2" th:name="ImgLink2">
+                <textarea style="display: none;" class="form-control" id="inputImgLink2" th:text="${info.getImgLink2}" th:name="ImgLink2"></textarea>
             </div>
             <div class="col-12">
-                <textarea style="display: none;" class="form-control" id="inputText3" placeholder="Text" th:name="Text3"></textarea>
+                <textarea style="display: none;" class="form-control" id="inputText3" th:text="${info.getText3}" th:name="Text3"></textarea>
             </div>
             <div class="col-12">
-                <input style="display: none;" class="form-control" id="inputImgLink3" placeholder="ImgLink3" th:name="ImgLink3">
+                <textarea style="display: none;" class="form-control" id="inputImgLink3" th:value="${info.getImgLink3}" th:name="ImgLink3"></textarea>
             </div>
             <div class="col-12">
                 <div class="dropdown">
@@ -39,7 +39,7 @@
                   </div>
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Seite speichern</button>
+                <button type="submit" class="btn btn-primary">Geänderte Seite speichern</button>
             </div>
         </form>
     </div>

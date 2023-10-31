@@ -40,8 +40,19 @@
 
         </ul>
 
-        <a class="btn btn-success btn-sm" role="button" th:href="@{/einrichten}">Neue Seite</a>
         
+          <span th:unless="${editMode}==true">
+            <a class="btn btn-success btn-sm" role="button" th:href="@{/navEdit/start}">Edit Mode</a>
+          </span>
+
+          <span th:if="${editMode}==true">
+            <a class="btn btn-success btn-sm" role="button" th:href="@{/einrichten}">Neue Seite</a>
+            <a class="btn btn-success btn-sm" role="button" th:href="@{/navEdit/ende}">Public Mode</a>
+            
+          </span>
+          
+        
+      
       </div>
     </div>
   </nav>

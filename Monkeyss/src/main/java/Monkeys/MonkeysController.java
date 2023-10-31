@@ -15,28 +15,37 @@ import Monkeys.Model.page;
 @Controller
 public class MonkeysController {
 
-    
+    boolean editModus;
     ArrayList<page> technGrundlagen;
     ArrayList<page> sicherheitVerfahren;
     ArrayList<page> komplexeVerfahren;
     ArrayList<page> angriffe;
+
     public MonkeysController() {
         setTechnGrundlagen(new ArrayList<>());
         setSicherheitVerfahren(new ArrayList<>());
         setAngriffe(new ArrayList<>());
         setKomplexeVerfahren(new ArrayList<>());
+        editModus = false;   
+        test();
+    }
+
+    public void test() {
+        System.out.println(editModus);
     }
     
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("activePage", "home");
-
+        System.out.println(editModus);
+        model.addAttribute("editMode", getEditModus());
         return "index.html";
     }
 
     @GetMapping("/einrichten")
     public String einrichten(Model model) {
         model.addAttribute("activePage", "einrichten");
+        model.addAttribute("editMode", getEditModus());
         return "index.html";
     }
 
@@ -65,7 +74,7 @@ public class MonkeysController {
 
                 try {
                     DatabaseController db = new DatabaseController();
-                    db.addTechnGrundlagen(page);
+                    db.addSicherheitVerfahren(page);
                 }
                 catch(Exception e){
                     System.out.println("Error! Player data not valid or parsing went wrong :( !");
@@ -78,7 +87,7 @@ public class MonkeysController {
 
                 try {
                     DatabaseController db = new DatabaseController();
-                    db.addTechnGrundlagen(page);
+                    db.addKomplexeVerfahren(page);
                 }
                 catch(Exception e){
                     System.out.println("Error! Player data not valid or parsing went wrong :( !");
@@ -91,7 +100,7 @@ public class MonkeysController {
 
                 try {
                     DatabaseController db = new DatabaseController();
-                    db.addTechnGrundlagen(page);
+                    db.addAngriffe(page);
                 }
                 catch(Exception e){
                     System.out.println("Error! Player data not valid or parsing went wrong :( !");
@@ -107,6 +116,7 @@ public class MonkeysController {
     public String uebersicht(@RequestParam(name = "thema", required = true, defaultValue = ".") String thema, Model model) throws SQLException {
         DatabaseController db = new DatabaseController();
         model.addAttribute("activePage", "uebersicht");
+        model.addAttribute("editMode", getEditModus());
         
         String t = thema;
         switch(t) {
@@ -141,23 +151,27 @@ public class MonkeysController {
     @GetMapping("/infoTech")
     public String infoTech(@RequestParam(name = "id", required = true, defaultValue = "0") int id, @RequestParam(name = "thema", required = true) String thema, Model model) throws SQLException{
         model.addAttribute("activePage", "infoTech");
+        model.addAttribute("editMode", getEditModus());
 
         DatabaseController db = new DatabaseController();
         String t = thema;
         switch(t) {
-            case "technGrundlagen":
-                
-            model.addAttribute("info", db.getTechnGrundlagen(id));
-            //System.out.println(db.getTechnGrundlagen(id));
+            case "technGrundlagen": 
+                model.addAttribute("info", db.getTechnGrundlagen(id));
+                model.addAttribute("thema", "technGrundlagen");
+                //System.out.println(db.getTechnGrundlagen(id));
                 break;
             case "sicherheitVerfahren":
                 model.addAttribute("info", db.getSicherheitVerfahren(id));
+                model.addAttribute("thema", "sicherheitVerfahren");
                 break;
             case "komplexeVerfahren":
                 model.addAttribute("info", db.getKomplexeVerfahren(id));
+                model.addAttribute("thema", "komplexeVerfahren");
                 break;
             case "angriffe":
                 model.addAttribute("info", db.getAngriffe(id));
+                model.addAttribute("thema", "angriffe");
                 break;
             
         }
@@ -165,15 +179,118 @@ public class MonkeysController {
     }
 
     @GetMapping("/editPage") 
-    public String editPage(Model model) {
+    public String editPage(@RequestParam(name = "id", required = true, defaultValue = "0") int id, @RequestParam(name = "thema", required = true) String thema, Model model) throws SQLException {
+
+        model.addAttribute("activePage", "editPage");
+        model.addAttribute("editMode", getEditModus());
+        
+        DatabaseController db = new DatabaseController();
+        String t = thema;
+        switch(t) {
+            case "technGrundlagen":
+                model.addAttribute("info", db.getTechnGrundlagen(id));
+                
+                model.addAttribute("thema", "technGrundlagen");
+                //System.out.println(db.getTechnGrundlagen(id));
+                break;
+            case "sicherheitVerfahren":
+                model.addAttribute("info", db.getSicherheitVerfahren(id));
+                model.addAttribute("thema", "sicherheitVerfahren");
+                break;
+            case "komplexeVerfahren":
+                model.addAttribute("info", db.getKomplexeVerfahren(id));
+                model.addAttribute("thema", "komplexeVerfahren");
+                break;
+            case "angriffe":
+                model.addAttribute("info", db.getAngriffe(id));
+                model.addAttribute("thema", "angriffe");
+                break;
+            
+        }
+        
         return "index.html";
     }
+
+    @PostMapping(path="/editPage/do")
+    public String editPageDo(@RequestParam(name = "thema", required = true) String thema, @RequestParam(name = "titel", required = true) String titel, @RequestParam(name = "Text1", required = true) String text1, @RequestParam(name = "ImgLink1", required = true) String ImgLink1, @RequestParam(name = "Text2", required = false) String text2, @RequestParam(name = "ImgLink2", required = false) String ImgLink2, @RequestParam(name = "Text3", required = false) String text3, @RequestParam(name = "ImgLink3", required = false) String ImgLink3, @RequestParam(name = "id", required = true) int id ) throws SQLException {
+
+         page page = new page( titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3);
+
+        String t = thema;
+        switch(t) {
+            case "technGrundlagen":
+                technGrundlagen.add(new page(titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+                
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.edit(t, id, page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
+                break;
+
+            case "sicherheitVerfahren":
+                sicherheitVerfahren.add(new page( titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.edit(t, id, page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
+                break;
+
+            case "komplexeVerfahren":
+                komplexeVerfahren.add(new page(titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.edit(t, id, page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
+                break;
+
+            case "angriffe":
+                angriffe.add(new page(titel, ImgLink1, text1, ImgLink2, text2, ImgLink3, text3));
+
+                try {
+                    DatabaseController db = new DatabaseController();
+                    db.edit(t, id, page);
+                }
+                catch(Exception e){
+                    System.out.println("Error! Player data not valid or parsing went wrong :( !");
+                    System.out.println(e);
+                }
+                break;
+        }
+        
+        return("redirect:/home");
+    }
+
+    @GetMapping("/navEdit/start")
+    public String navEditStart() {
+        setEditModus(true);
+        return("redirect:/home");
+    }
+
+    @GetMapping("/navEdit/ende")
+    public String navEditEnde() {
+        setEditModus(false);
+        return("redirect:/home");
+    }
+
 
     public void showTechnGrundlagen() {
         
         System.out.println(technGrundlagen.get(0).getTitel());
     }
-
     public void setTechnGrundlagen(ArrayList<page> technGrundlagen) {
         this.technGrundlagen = technGrundlagen;
     }
@@ -195,9 +312,14 @@ public class MonkeysController {
     public ArrayList<page> getSicherheitVerfahren() {
         return sicherheitVerfahren;
     }
-
     public ArrayList<page> getTechnGrundlagen() {
         return technGrundlagen;
+    }
+    public void setEditModus(boolean editModus) {
+        this.editModus = editModus;
+    }
+    public boolean getEditModus() {
+        return editModus;
     }
 
 

@@ -62,13 +62,15 @@ public class DatabaseController {
             closeConnection(connection);
         }
     }
-
-    public void editTechnGrundlagen(int id) {
+    
+    public void edit(String thema, int id, page page ) throws SQLException {
         Connection connection = connect();
         if(connection != null) {
-            
+            Statement statement = connection.createStatement();
+            statement.execute("UPDATE '"+thema+"' SET titel='"+page.getTitel()+"', imgLink1='"+page.getImgLink1()+"', text1='"+page.getText1()+"', imgLink2='"+page.getImgLink2()+"', text2='"+page.getText2()+"', imgLink3='"+page.getImgLink3()+"', text3='"+page.getText3()+"' WHERE id='"+id+"'");
         }
     }
+    
 
     public page getTechnGrundlagen(int id) throws SQLException {
         Connection connection = connect();
