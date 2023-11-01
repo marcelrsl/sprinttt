@@ -1,4 +1,4 @@
-/*package Monkeys;
+package Monkeys;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller 
 public class VerschluesselungController  {
 
-    /* Klartext mit dem Schluessel verschluesseln 
+    // Klartext mit dem Schluessel verschluesseln 
     private String code(String plaintext, int key){
         String ciphertext = "";
         plaintext = plaintext.toLowerCase(); //Alles in Kleinbuchstaben umwandeln
@@ -19,7 +19,7 @@ public class VerschluesselungController  {
         return ciphertext;
     }
 
-    /* Verschiebt den Buchstaben um die angegebene Verschiebung (key)
+     //Verschiebt den Buchstaben um die angegebene Verschiebung (key)
     private char shift(char letter, int shift){
         //Buchstaben als Zahl behandeln
         if(letter>='a' && letter <='z'){ //Sonderzeichen nicht veraendern
@@ -31,7 +31,7 @@ public class VerschluesselungController  {
         return letter;
     }
 
-    /* Entschluesselt den Geheimtext mit dem angegebenen Schluessel 
+   // Entschluesselt den Geheimtext mit dem angegebenen Schluessel 
     private String decode(String ciphertext, int key){
         String decoded = "";
         ciphertext = ciphertext.toLowerCase(); //Alles in Kleinbuchstaben umwandeln
@@ -44,7 +44,7 @@ public class VerschluesselungController  {
         return decoded;
     }
 
-    @GetMapping("/")
+    @GetMapping("/verschluesselung")
     public String Caesar(@RequestParam(name="klartext", required = false, defaultValue = "") String klartext,
     @RequestParam (name="key", required = false, defaultValue = "0") int key, Model model){
 
@@ -55,9 +55,8 @@ public class VerschluesselungController  {
             model.addAttribute("encrypt", false);
         }
 
-        return "Verschluesselung.html";
+        return "verschluesselung.html";
     }
 
 
 }
-*/
