@@ -7,11 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller 
 public class VerschluesselungController  {
 
-<<<<<<< HEAD
     //Klartext mit dem Schluessel verschluesseln 
-=======
-    // Klartext mit dem Schluessel verschluesseln 
->>>>>>> 8e396b51a93d81cd98fb5383f0118c6a683132ca
     private String code(String plaintext, int key){
         String ciphertext = "";
         plaintext = plaintext.toLowerCase(); //Alles in Kleinbuchstaben umwandeln
@@ -23,11 +19,7 @@ public class VerschluesselungController  {
         return ciphertext;
     }
 
-<<<<<<< HEAD
     //Verschiebt den Buchstaben um die angegebene Verschiebung (key)
-=======
-     //Verschiebt den Buchstaben um die angegebene Verschiebung (key)
->>>>>>> 8e396b51a93d81cd98fb5383f0118c6a683132ca
     private char shift(char letter, int shift){
         //Buchstaben als Zahl behandeln
         if(letter>='a' && letter <='z'){ //Sonderzeichen nicht veraendern
@@ -39,11 +31,7 @@ public class VerschluesselungController  {
         return letter;
     }
 
-<<<<<<< HEAD
     //Entschluesselt den Geheimtext mit dem angegebenen Schluessel 
-=======
-   // Entschluesselt den Geheimtext mit dem angegebenen Schluessel 
->>>>>>> 8e396b51a93d81cd98fb5383f0118c6a683132ca
     private String decode(String ciphertext, int key){
         String decoded = "";
         ciphertext = ciphertext.toLowerCase(); //Alles in Kleinbuchstaben umwandeln

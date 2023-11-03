@@ -359,6 +359,4 @@ public class MonkeysController {
     public boolean getBenachrichtigung2() {
         return benachrichtigung2;
     }
-
-
 }
