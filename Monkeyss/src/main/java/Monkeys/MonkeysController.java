@@ -16,6 +16,8 @@ import Monkeys.Model.page;
 public class MonkeysController {
 
     boolean editModus;
+    boolean benachrichtigung1;
+    boolean benachrichtigung2;
     ArrayList<page> technGrundlagen;
     ArrayList<page> sicherheitVerfahren;
     ArrayList<page> komplexeVerfahren;
@@ -26,7 +28,9 @@ public class MonkeysController {
         setSicherheitVerfahren(new ArrayList<>());
         setAngriffe(new ArrayList<>());
         setKomplexeVerfahren(new ArrayList<>());
-        editModus = false;   
+        editModus = false;  
+        benachrichtigung1 = false;
+        benachrichtigung2 = false; 
         test();
     }
 
@@ -39,6 +43,9 @@ public class MonkeysController {
         model.addAttribute("activePage", "home");
         System.out.println(editModus);
         model.addAttribute("editMode", getEditModus());
+        model.addAttribute("benachrichtigung1", getBenachrichtigung1());
+        model.addAttribute("benachrichtigung2", getBenachrichtigung2());
+        System.out.println("Benachrichtigung 1 wurde auf"+ benachrichtigung1 + "geesetzt");
         return "index.html";
     }
 
@@ -294,12 +301,14 @@ public class MonkeysController {
     @GetMapping("/navEdit/start")
     public String navEditStart() {
         setEditModus(true);
+        setBenachrichtigung1(true);
         return("redirect:/home");
     }
 
     @GetMapping("/navEdit/ende")
     public String navEditEnde() {
         setEditModus(false);
+        setBenachrichtigung2(true);
         return("redirect:/home");
     }
 
@@ -338,7 +347,18 @@ public class MonkeysController {
     public boolean getEditModus() {
         return editModus;
     }
-
+    public void setBenachrichtigung1(boolean benachrichtigung1) {
+        this.benachrichtigung1 = benachrichtigung1;
+    }
+    public boolean getBenachrichtigung1() {
+        return benachrichtigung1;
+    }
+    public void setBenachrichtigung2(boolean benachrichtigung2) {
+        this.benachrichtigung2 = benachrichtigung2;
+    }
+    public boolean getBenachrichtigung2() {
+        return benachrichtigung2;
+    }
 
 
 }
