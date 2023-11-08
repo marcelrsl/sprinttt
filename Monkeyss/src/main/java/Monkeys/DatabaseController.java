@@ -11,7 +11,6 @@ import Monkeys.Model.page;
 
 public class DatabaseController {
     
-    //Erstellen der Tabellen falls noch nicht geschehen.
     public void createTable() throws SQLException{
         Connection connection = connect();
         if(connection != null) {
@@ -54,26 +53,6 @@ public class DatabaseController {
 		connection.close();
 	}
 
-    //In dieser Methode wird ein Objekt in der Datenbank geupdatet. 
-    public void edit(String thema, int id, page page ) throws SQLException {
-        Connection connection = connect();
-        if(connection != null) {
-            Statement statement = connection.createStatement();
-            statement.execute("UPDATE '"+thema+"' SET titel='"+page.getTitel()+"', imgLink1='"+page.getImgLink1()+"', text1='"+page.getText1()+"', imgLink2='"+page.getImgLink2()+"', text2='"+page.getText2()+"', imgLink3='"+page.getImgLink3()+"', text3='"+page.getText3()+"' WHERE id='"+id+"'");
-        }
-    }
-
-    //Hier wird eine Objekt gelöscht
-    public void deletePage(String thema, int id) throws SQLException{
-        Connection connection = connect();
-		if(connection != null){
-			Statement statement = connection.createStatement();
-			statement.execute("DELETE FROM '"+thema+"' WHERE id='"+id+"'");
-			closeConnection(connection);
-		}
-    }
-
-    //Hinzufügen von Inhalten aus dem MonkeysController in die Datenbank
     public void addTechnGrundlagen(page page) throws SQLException {
         Connection connection = connect();
         if(connection != null) {
@@ -84,7 +63,24 @@ public class DatabaseController {
         }
     }
     
-    //Hier wird ein bestimmtes Objekt aus der Datenbank geholt
+    public void edit(String thema, int id, page page ) throws SQLException {
+        Connection connection = connect();
+        if(connection != null) {
+            Statement statement = connection.createStatement();
+            statement.execute("UPDATE '"+thema+"' SET titel='"+page.getTitel()+"', imgLink1='"+page.getImgLink1()+"', text1='"+page.getText1()+"', imgLink2='"+page.getImgLink2()+"', text2='"+page.getText2()+"', imgLink3='"+page.getImgLink3()+"', text3='"+page.getText3()+"' WHERE id='"+id+"'");
+        }
+    }
+
+    public void deletePage(String thema, int id) throws SQLException{
+        Connection connection = connect();
+		if(connection != null){
+			Statement statement = connection.createStatement();
+			statement.execute("DELETE FROM '"+thema+"' WHERE id='"+id+"'");
+			closeConnection(connection);
+		}
+    }
+    
+
     public page getTechnGrundlagen(int id) throws SQLException {
         Connection connection = connect();
         page page = null;
@@ -103,7 +99,6 @@ public class DatabaseController {
        return page; 
     }
 
-    //Hier werden alle Objekte von einem Thema geholt
     public ArrayList<page> getAllTechnGrundlagen()  throws SQLException{
 		ArrayList<page> technGrundlagen = new ArrayList<>();
 
@@ -122,7 +117,6 @@ public class DatabaseController {
 		return technGrundlagen;
 	}
 
-    //Hinzufügen von Inhalten aus dem MonkeysController in die Datenbank
     public void addSicherheitVerfahren(page page) throws SQLException {
         Connection connection = connect();
         if(connection != null) {
@@ -133,7 +127,6 @@ public class DatabaseController {
         }
     }
 
-    //Hier wird ein bestimmtes Objekt aus der Datenbank geholt
     public page getSicherheitVerfahren(int id) throws SQLException {
         Connection connection = connect();
         page page = null;
@@ -152,7 +145,6 @@ public class DatabaseController {
        return page; 
     }
 
-    //Hier werden alle Objekte von einem Thema geholt
     public ArrayList<page> getAllSicherheitVerfahren()  throws SQLException{
 		ArrayList<page> sicherheitVerfahren = new ArrayList<>();
 
@@ -169,7 +161,6 @@ public class DatabaseController {
 		return sicherheitVerfahren;
 	}
 
-    //Hinzufügen von Inhalten aus dem MonkeysController in die Datenbank
     public void addKomplexeVerfahren(page page) throws SQLException {
         Connection connection = connect();
         if(connection != null) {
@@ -180,7 +171,6 @@ public class DatabaseController {
         }
     }
 
-    //Hier wird ein bestimmtes Objekt aus der Datenbank geholt
     public page getKomplexeVerfahren(int id) throws SQLException {
         Connection connection = connect();
         page page = null;
@@ -198,7 +188,6 @@ public class DatabaseController {
        return page; 
     }
 
-    //Hier werden alle Objekte von einem Thema geholt
     public ArrayList<page> getAllKomplexeVerfahren()  throws SQLException{
 		ArrayList<page> komplexeVerfahren = new ArrayList<>();
 
@@ -215,7 +204,6 @@ public class DatabaseController {
 		return komplexeVerfahren;
 	}
 
-    //Hinzufügen von Inhalten aus dem MonkeysController in die Datenbank
     public void addAngriffe(page page) throws SQLException {
         Connection connection = connect();
         if(connection != null) {
@@ -226,7 +214,6 @@ public class DatabaseController {
         }
     }
 
-    //Hier wird ein bestimmtes Objekt aus der Datenbank geholt
     public page getAngriffe(int id) throws SQLException {
         Connection connection = connect();
         page page = null;
@@ -245,7 +232,6 @@ public class DatabaseController {
        return page; 
     }
 
-    //Hier werden alle Objekte von einem Thema geholt
     public ArrayList<page> getAllAngriffe()  throws SQLException{
 		ArrayList<page> angriffe = new ArrayList<>();
 
