@@ -55,8 +55,8 @@ public class VerschluesselungController  {
 
     @PostMapping(path = "/caesar/do") 
     public String caesarDo(@RequestParam(name="klartext", required = true, defaultValue = "") String klartext,
-                            @RequestParam(name="key", required = true, defaultValue = "0") int key,
-                            RedirectAttributes redirectAttributes) {
+        @RequestParam(name="key", required = true, defaultValue = "0") int key,
+        RedirectAttributes redirectAttributes) {
         String encryptedText = code(klartext, key);
         redirectAttributes.addFlashAttribute("klartext", encryptedText);
         redirectAttributes.addFlashAttribute("encrypt", klartext.length() > 0);
