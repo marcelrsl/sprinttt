@@ -1,4 +1,5 @@
 package Monkeys;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,18 +45,22 @@ public class VerschluesselungController  {
         return decoded;
     }
 
-    @GetMapping("/verschluesselung")
-    public String Caesar(@RequestParam(name="klartext", required = false, defaultValue = "") String klartext,
-    @RequestParam (name="key", required = false, defaultValue = "0") int key, Model model){
+    @GetMapping("/caesar")
+    public String caesar( Model model){
+        System.out.println("Yayyyyyyyyy");
+        model.addAttribute("activePage", "verschluesselung");
+        return "index.html";
+    }
 
+    @GetMapping("/caesar/do") 
+    public String caesarDo(@RequestParam(name="klartext", required = true, defaultValue = "") String klartext, @RequestParam (name="key", required = true, defaultValue = "0") int key, Model model) {
         model.addAttribute("klartext", code(klartext, key));
         if (klartext.length() > 0) {
             model.addAttribute("encrypt", true);
         }else{
             model.addAttribute("encrypt", false);
         }
-
-        return "verschluesselung.html";
+        return "redirect:/caesar";
     }
 
 
