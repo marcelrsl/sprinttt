@@ -3,6 +3,7 @@ package Monkeys;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller 
@@ -48,12 +49,13 @@ public class VerschluesselungController  {
     @GetMapping("/caesar")
     public String caesar( Model model){
         System.out.println("Yayyyyyyyyy");
-        model.addAttribute("activePage", "verschluesselung");
+        model.addAttribute("activePage", "caesar");
         return "index.html";
     }
 
-    @GetMapping("/caesar/do") 
+    @PostMapping(path = "/caesar/do") 
     public String caesarDo(@RequestParam(name="klartext", required = true, defaultValue = "") String klartext, @RequestParam (name="key", required = true, defaultValue = "0") int key, Model model) {
+        System.out.println(code(klartext, key));
         model.addAttribute("klartext", code(klartext, key));
         if (klartext.length() > 0) {
             model.addAttribute("encrypt", true);
