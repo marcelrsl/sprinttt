@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller 
 public class VerschluesselungController  {
@@ -47,21 +48,19 @@ public class VerschluesselungController  {
     }
 
     @GetMapping("/caesar")
-    public String caesar( Model model){
-        System.out.println("Yayyyyyyyyy");
+    public String caesar(Model model) {
         model.addAttribute("activePage", "caesar");
         return "index.html";
     }
 
     @PostMapping(path = "/caesar/do") 
-    public String caesarDo(@RequestParam(name="klartext", required = true, defaultValue = "") String klartext, @RequestParam (name="key", required = true, defaultValue = "0") int key, Model model) {
-        System.out.println(code(klartext, key));
-        model.addAttribute("klartext", code(klartext, key));
-        if (klartext.length() > 0) {
-            model.addAttribute("encrypt", true);
-        }else{
-            model.addAttribute("encrypt", false);
-        }
+    public String caesarDo(@RequestParam(name="klartext", required = true, defaultValue = "") String klartext,
+                            @RequestParam(name="key", required = true, defaultValue = "0") int key,
+                            RedirectAttributes redirectAttributes) {
+        String encryptedText = code(klartext, key);
+        redirectAttributes.addFlashAttribute("klartext", encryptedText);
+        redirectAttributes.addFlashAttribute("encrypt", klartext.length() > 0);
+
         return "redirect:/caesar";
     }
 
