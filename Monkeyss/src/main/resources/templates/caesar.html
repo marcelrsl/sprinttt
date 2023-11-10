@@ -5,7 +5,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            margin: 40px 20px; /* Erhöhen Sie den oberen Rand */
+            margin: 20px;
         }
 
         h1 {
@@ -71,6 +71,6 @@
         <!-- Der verschlüsselte Text wird aus dem Modellattribut "klartext" genommen -->
         Der verschlüsselte Text ist: <span th:text="${klartext}"></span>
     </p>
-    <p th:unless="${encrypt}">Nichts ist zu sehen</p>
+    <p th:unless="${encrypt}">Schreibe etwas ins Feld "Klartext" und wähle einen Schlüssel, um einen verschlüsselten Text zu erhalten.</p>
 </body>
 </html>
