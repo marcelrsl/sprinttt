@@ -11,4 +11,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class RSAVerfahrenController {
     int p;
     int q;
+    int n;
+    int f;
+    int e;
+    int d;
+
+    @GetMapping("/rsaverfahren")
+    public String rsaverfahren(@RequestParam(name="activePage", required = false, defaultValue = "rsaverfahren") String activePage, Model model){
+        model.addAttribute("activePage", "rsaverfahren");
+        return "index.html";
+    }
+
 }
