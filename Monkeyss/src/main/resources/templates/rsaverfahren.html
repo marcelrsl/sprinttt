@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>RSA Verfahren</h1>
+    <hr>
+    <form action="/rsaverfahren" method="post">
+        <label for="key">Schlüssel</label><br>
+        <input type="number" id="key" name="key" value=""><br>
+        <button type="submit">Erstellen</button>
+    </form>
+
+    <!-- Überprüfen Sie ob das Modellattribut "encrypt" auf true gesetzt ist -->
+    <p th:if="${encrypt}">
+        <!-- Der verschlüsselte Text wird aus dem Modellattribut "klartext" genommen -->
+        Der verschlüsselte Text ist: <span th:text="${klartext}"></span>
+    </p>
+    <p th:unless="${encrypt}">Aus den von Ihnen eingegebene Zahlen wird für Sie ein Public Key und ein Private Key generiert.</p>
+</div>
