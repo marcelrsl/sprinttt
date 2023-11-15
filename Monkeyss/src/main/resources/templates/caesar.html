@@ -2,16 +2,17 @@
     <h1>Caesar Verschluesselung</h1>
     <hr>
     <form action="/caesar/do" method="post">
-        <label for="klartext">Klartext</label><br>
-        <input type="text" id="klartext" name="klartext" value=""><br>
+        <label for="klartext" class="form-label">Klartext</label>
+        <input type="klartext" class="form-control" name="klartext" id="klartext">
         <label for="key">Schlüssel</label><br>
-        <input type="number" id="key" name="key" value=""><br>
-        <button type="submit">Verschlüsseln</button>
+        <input type="number" class="form-control" name="key" id="number">
+        <button type="submit" class="btn btn-primary">Verschlüsseln</button>
     </form>
 
-    <!-- Überprüfen Sie ob das Modellattribut "encrypt" auf true gesetzt ist -->
+    <div style="margin-top: 20px;"> <!--  Abstand zwischen Buzzon und Text wird eingefügt -->
+    <!-- Prüfen ob Modellattribut "encrypt" auf true gesetzt ist -->
     <p th:if="${encrypt}">
-        <!-- Der verschlüsselte Text wird aus dem Modellattribut "klartext" genommen -->
+        <!-- verschlüsselte Text wird aus dem Modellattribut "klartext" genommen -->
         Der verschlüsselte Text ist: <span th:text="${klartext}"></span>
     </p>
     <p th:unless="${encrypt}">Schreibe etwas ins Feld "Klartext" und wähle einen Schlüssel, um einen verschlüsselten Text zu erhalten.</p>
