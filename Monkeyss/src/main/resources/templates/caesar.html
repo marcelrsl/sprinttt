@@ -1,65 +1,10 @@
-<head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 20px;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        p {
-            margin-top: 20px;
-        }
-
-        span {
-            font-weight: bold;
-        }
-
-    </style>
-</head>
-<body>
+<div class="container">
     <h1>Caesar Verschluesselung</h1>
     <hr>
     <form action="/caesar/do" method="post">
         <label for="klartext">Klartext</label><br>
         <input type="text" id="klartext" name="klartext" value=""><br>
-        <label for="key">Key</label><br>
+        <label for="key">Schlüssel</label><br>
         <input type="number" id="key" name="key" value=""><br>
         <button type="submit">Verschlüsseln</button>
     </form>
@@ -70,5 +15,4 @@
         Der verschlüsselte Text ist: <span th:text="${klartext}"></span>
     </p>
     <p th:unless="${encrypt}">Schreibe etwas ins Feld "Klartext" und wähle einen Schlüssel, um einen verschlüsselten Text zu erhalten.</p>
-</body>
-
+</div>
