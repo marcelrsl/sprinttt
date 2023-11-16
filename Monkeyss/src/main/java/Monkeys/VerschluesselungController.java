@@ -48,21 +48,21 @@ public class VerschluesselungController  {
     }
 
     @GetMapping("/caesar")
-    public String caesar(Model model) {
+    public String caesar(@RequestParam(name="encrypt", required = false, defaultValue = "") String encrypt,@RequestParam(name="klartext", required = false, defaultValue = "") String klartext,Model model) {
         model.addAttribute("activePage", "caesar");
+        model.addAttribute("klartext", klartext);
+        model.addAttribute("encrypt", klartext.length() > 0);
+    
         return "index.html";
     }
 
     @PostMapping(path = "/caesar/do") 
-    public String caesarDo(@RequestParam(name="klartext", required = true, defaultValue = "") String klartext,
-        @RequestParam(name="key", required = true, defaultValue = "0") int key,
-        RedirectAttributes redirectAttributes) {
-        String encryptedText = code(klartext, key);
-        redirectAttributes.addFlashAttribute("klartext", encryptedText);
-        redirectAttributes.addFlashAttribute("encrypt", klartext.length() > 0);
-
-        return "redirect:/caesar";
+public String caesarDo(RedirectAttributes redirectAttributes, @RequestParam(name="klartext", required = true, defaultValue = "") String klartext,
+    @RequestParam(name="key", required = true, defaultValue = "0") int key,
+    Model model) {
+    String encryptedText = code(klartext, key);
+    redirectAttributes.addAttribute("klartext", encryptedText);
+    redirectAttributes.addAttribute("encrypt", klartext.length() > 0);
+    return "redirect:/caesar"; // Annahme, dass deine HTML-Datei "caesar.html" ist, ändere dies entsprechend
     }
-
-
 }
