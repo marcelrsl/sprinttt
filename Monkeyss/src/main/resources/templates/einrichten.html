@@ -1,11 +1,17 @@
+<!--Auf dieser Seite kann man eine neue Inhalte auf einer neuen Seite einfügen. Diese werden dann in der Datenbank gespeichert.-->
+<!--Für die schönere Ansicht-->
 <div style="margin-top: 50px; margin-left: 5%; margin-right: 5%; min-height: 100vh;">
 <div>
+    <!--über th:action gelangt man zum richtigen Mapping. In diesem Fall method post-->
     <form class="row g-3" style="margin-top: 5%;" th:action="@{/einrichten/do}" method="post">
 
+        <!--Damit die Eingabe des Titels auch in der Mitte ist-->
         <div class="col-3"></div>
+        <!--Eingeben des Titels-->
         <div class="col-6" >
             <input type="text" class="form-control text-center fs-2" id="inputTitel" placeholder="Titel" th:name="titel">
         </div>
+        <!--Auswählen des Themas-->
         <div class="col-3">
             <select class="form-select" aria-label="Default select example" th:name="thema" id="thema">
                 <option selected>Welches Thema</option>
@@ -16,6 +22,7 @@
               </select>
         </div> 
         
+        <!--Eingabe der gesamten Inhalte-->
         <div class="col-6">
             <textarea class="form-control" id="inputText1" placeholder="Text" th:name="Text1"></textarea>
         </div>
@@ -34,11 +41,13 @@
         <div class="col-12">
             <textarea style="display: none;" class="form-control" id="inputImgLink3" placeholder="ImgLink3" th:name="ImgLink3"></textarea>
         </div>
+        <!--Hier kann man über das Drop Down Menü noch mehr Inhalte einfügen-->
         <div class="col-12">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Hinzufügen
                 </button>
+                <!--Um das Input-Feld sichtbar zu machen, wird auch JavaScript benutzt.-->
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" onclick="showText2()">Text</a></li>
                   <li><a class="dropdown-item" onclick="showBild2()">Bild</a></li>
@@ -54,6 +63,7 @@
 </div>
 </div>
 
+<!--Hier wird über javaScript das Feld angezeigt. Über .show()-->
 <script type="text/javascript">
     function showText2() {
         

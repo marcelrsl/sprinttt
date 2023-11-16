@@ -1,13 +1,16 @@
+<!--Diese Seite ist die Übersicht von den jeweiligem Thema und deren Unterthemen. -->
+<!--Hier wird wieder groß der Titel des Themas angezeigt-->
 <div style="width: 100%; height: 100vh;">
     <h1 class="position-absolute top-50 start-50 translate-middle display-2" th:text="${titel}"></h1>
 </div>
 
+<!--Hier wird automatisch für jedes Unterthema eine Karte mit einem Link zur Seite erstellt.-->
 <div style="background-color: burlywood;">
     <div class="row col-12 text-center justify-content-center" >
         <div th:each="ue : ${uebersicht}" class="card bg-transparent border-dark m-3 " style="width: 18rem; margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
             <div class="card-body" style="margin-top: 5%; margin-right: 5%; margin-left: 5%; margin-bottom: 5%;">
                 <h5 class="card-title" th:text="${ue.getTitel}"></h5>
-
+                <!--Je nach Modus führt der Link zur originalen Seite oder zum Edit. Dann wird auch rechts oben ein Mülleinmer zum löschen der Seite angezeigt-->
                 <span th:unless="${editMode}==true">
                     <a class="btn btn-primary" th:href="@{/infoTech(id=${ue.getId}, thema=${thema})}">Seite besuchen</a>
                 </span>

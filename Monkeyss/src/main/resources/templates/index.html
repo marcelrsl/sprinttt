@@ -15,11 +15,12 @@
   </head>
   <body style="background-color: white;">
     <!-- Hier wird die menu.html-Datei eingebunden, damit die Navigation dynamisch wird. -->
-      
+      <!--Die Navabr wird eingefügt-->
         <div th:insert="navbar"></div>
       <!-- 
           In diesen Container wird die aktuelle Seite eingebunden. Der Wert für activePage kommt direkt von der Navbar oder anderen Seiten, die per Link aufgerufen werden. 
       -->
+      <!--Damit die Seite ganz zusehen ist, wird ein margin-top eingefügt, wodurch die Seite nach untern verschoben wird.-->
       <div style="margin-top: 15vh;">
         <div th:insert="${activePage}"></div>
       </div>

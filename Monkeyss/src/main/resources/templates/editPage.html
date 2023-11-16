@@ -1,3 +1,6 @@
+<!--Auf dieser Seite passiert genau das Selbe wie bei einrichten.html. Der Unterschied besteht darin, dass die schon vorhandenen Inhalte in den Input-Bereichen angezeigt werden. 
+Für mehr Kommentare bitte in einrichten.html reinschauen.-->
+
 <div style=" margin-left: 5%; margin-right: 5%; min-height: 100vh;">
     <div>
         <form class="row g-3" style="margin-top: 5%;" th:action="@{/editPage/do(id=${info.getId}, thema=${thema})}" method="post">
@@ -7,6 +10,7 @@
                 <textarea type="text" class="form-control text-center fs-2" id="inputTitel" th:text="${info.getTitel}" th:name="titel"></textarea>
             </div>
             
+            <!--Erklärung am Unterem: Durch th:text="..." werden die Inhalte angezeigt-->
             <div class="col-6">
                 <textarea class="form-control" id="inputText1" th:text="${info.getText1}" th:name="Text1"></textarea>
             </div>

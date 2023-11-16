@@ -3,13 +3,14 @@
 -->
 <nav class="navbar navbar-expand-lg fixed-top container-fluid" style="background-color: burlywood;">
   <div class="container">
+    <!--Titel in der Navbar-->
     <a class="navbar-brand" th:href="@{/home}">Verteilte Systeme</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
+        <!--Links-->
         <li th:if="${activePage == 'uebersicht'}" class="nav-item">
           <a class="nav-link active" th:href="@{/uebersicht(thema='technGrundlagen')}">Technische Grundlagen</a>
         </li>
@@ -18,10 +19,10 @@
         </li>
 
         <li th:if="${activePage == 'sicherheitVerfahren'}" class="nav-item">
-          <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit + Verfahren</a>
+          <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit & Verfahren</a>
         </li>
         <li th:unless="${activePage == 'sicherheitVerfahren'}" class="nav-item">
-            <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit + Verfahren</a>
+            <a class="nav-link active" th:href="@{/uebersicht(thema='sicherheitVerfahren')}">Sicherheit & Verfahren</a>
         </li>
 
         <li th:if="${activePage == 'uebersicht'}" class="nav-item">
@@ -39,6 +40,7 @@
         </li>
 
       </ul>
+      <!--Buttons für die Einstellung des Modus und korrekte Anzeige des passenden Buttons-->
         <span th:unless="${editMode}==true">
           <a class="btn btn-success btn-sm" role="button" th:href="@{/navEdit/start}">Edit Mode</a>
         </span>
@@ -50,8 +52,8 @@
   </div>
 </nav>
 
-<!--Benachrichtigung, dass man sich im Edit Modus befindet.-->
-
+<!--Benachrichtigung, dass man sich im Edit Modus befindet. Noch auskommentiert.-->
+<!--
 <span th:if="${benachrichtigung1}==true">
   
   <div class="toast-container position-fixed bottom-0 end-0 p-3" >
@@ -80,6 +82,5 @@
     </div>
   </div>
 </span>
-
-
+-->
 

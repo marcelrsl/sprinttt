@@ -1,7 +1,11 @@
 <div style="min-height: 100vh">
 
+  <!--Hier wird der Titel des jeweiligen Themas eingefügt.-->
   <h5 class="text-center fs-1" th:text="${info.getTitel}"></h5>
   <br>
+  <!--Im Folgenden wird abgefragt, ob die einzelnen Variabeln belegt sind und demnach die Seite aufgebaut.-->
+
+  <!--Für eine einzelen Text-->
   <span th:if="${#strings.length(info.getImgLink1) == 0}">
         <div class="container">
           <div class="container">
@@ -9,8 +13,12 @@
           </div>
         </div>
   </span>
+
+  <!--Für die folgtenden Texte-->
   <span th:unless="${#strings.length(info.getImgLink1) == 0}">
+    <!--Für zwei Texte/Bilder-->
     <span th:if="${#strings.length(info.getText2) == 0}">
+      <!--Beide Texte werden nebeneinander positioniert und angezeigt. Dies passiert mit Hilfe von Column-->
       <div class="container text-center">
         <div class="col align-self-center">
           <div class="row justify-content-evenly">
@@ -25,6 +33,7 @@
       </div>
     </span>
     <span th:unless="${#strings.length(info.getText2) == 0}">
+      <!--Für drei Texte/Bilder-->
       <span th:if="${#strings.length(info.getImgLink2)== 0}">
         <div class="container text-center">
           <div class="col align-self-center">
@@ -39,9 +48,16 @@
             </div>
           </div>
         </div>
-        <div class="col-12 position-relative" style="min-height: 50vh; background-color: burlywood;">
-          <div class="container">
-            <p class="text-start position-absolute top-50 start-50 translate-middle" style="line-height: 35px;" th:utext="${info.getText2}"></p>
+        <!--Hier wird der 3. Text unter die beiden oberen eingefügt und farblich unterlegt-->
+        <div class="container-fluid text-left" style="min-height: 50vh; background-color: burlywood;">
+          <div class="row justify-content-start">
+            <div class="col-2">
+
+            </div>
+            <div class="col-8" style="margin-top: 20px;">
+              <p style="line-height: 35px;" th:utext="${info.getText2}"></p>
+            </div>
+            
           </div>
         </div>
       </span>

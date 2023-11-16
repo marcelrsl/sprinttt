@@ -48,7 +48,6 @@ public class MonkeysController {
         model.addAttribute("editMode", getEditModus());
         model.addAttribute("benachrichtigung1", getBenachrichtigung1());
         model.addAttribute("benachrichtigung2", getBenachrichtigung2());
-        System.out.println("Benachrichtigung 1 wurde auf"+ benachrichtigung1 + "geesetzt");
         return "index.html";
     }
 
